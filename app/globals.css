@@ -2,32 +2,490 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap');
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --font-inter: 'Inter', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --accent: #0052CC;
+  --accent-light: #1a6fe8;
+  --foreground: #000000;
+  --background: #FFFFFF;
+  --muted: #6b7280;
+  --border: #e5e7eb;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles this */
+  overflow-x: hidden;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #ffffff;
+  color: #000000;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  cursor: none;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Hide default cursor everywhere */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s, transform 0.15s;
+  mix-blend-mode: difference;
+}
+
+.cursor-outline {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(0,0,0,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1),
+              height 0.3s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.2s,
+              background 0.2s;
+}
+
+.cursor-outline.hover {
+  width: 64px;
+  height: 64px;
+  border-color: var(--accent);
+  background: rgba(0, 82, 204, 0.06);
+}
+
+.cursor-outline.clicking {
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+/* ── NOISE TEXTURE overlay ── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #fff; }
+::-webkit-scrollbar-thumb { background: #000; border-radius: 2px; }
+
+/* ── TEXT SPLIT ANIMATION ── */
+.split-char {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.split-char-inner {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.split-char-inner.visible {
+  transform: translateY(0);
+}
+
+/* ── MAGNETIC BUTTON ── */
+.magnetic-wrap {
+  display: inline-block;
+  position: relative;
+}
+
+/* ── LINK UNDERLINE ANIMATION ── */
+.animated-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.animated-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animated-link:hover::after {
+  width: 100%;
+}
+
+/* ── IMAGE REVEAL MASK ── */
+.img-reveal-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-reveal-mask {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  transform-origin: left;
+  z-index: 2;
+}
+
+/* ── GLASS CARD ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* ── SECTION DIVIDER LINE ── */
+.svg-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.svg-line.drawn {
+  animation: lineDraw 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes lineDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── LOADING SCREEN ── */
+.loader-bar {
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* ── HORIZONTAL SCROLL ── */
+.h-scroll-container {
+  overflow: hidden;
+}
+
+/* ── FORM STYLES ── */
+.form-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  outline: none;
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1rem;
+  color: #000;
+  transition: border-color 0.3s;
+  font-family: var(--font-inter);
+}
+
+.form-input:focus {
+  border-color: #000;
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.form-label {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-group:focus-within .form-label,
+.form-group.has-value .form-label {
+  top: -14px;
+  font-size: 0.75rem;
+  color: #000;
+}
+
+/* ── MARQUEE ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+}
+
+/* ── SECTION TRANSITIONS ── */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ── TIMELINE ── */
+.timeline-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #e5e7eb;
+  transform-origin: top;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #000;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.timeline-item:hover .timeline-dot {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── PROJECT CARD ── */
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 82, 204, 0.9);
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card:hover .project-card-overlay {
+  transform: translateY(0);
+}
+
+/* ── SKILL CHIP ── */
+.skill-chip {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-chip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.skill-chip:hover::before {
+  transform: scaleX(1);
+}
+
+.skill-chip:hover {
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ── TESTIMONIAL CARD ── */
+.testimonial-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+}
+
+/* ── COUNTER ── */
+.counter-value {
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── NAV ── */
+.nav-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.15s;
+}
+
+/* ── BUTTON PREMIUM ── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  border: 1.5px solid #000;
+  transition: color 0.3s;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover::before {
+  transform: translateX(0);
+}
+
+.btn-primary:hover {
+  color: #fff;
+}
+
+.btn-primary span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-outline {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  color: #000;
+  border: 1.5px solid #000;
+  transition: color 0.3s;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #000;
+  transform: translateY(101%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-outline:hover {
+  color: #fff;
+}
+
+.btn-outline:hover::before {
+  transform: translateY(0);
+}
+
+.btn-outline span {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── FLOATING SHAPES ── */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-24px) rotate(8deg); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(18px) rotate(-5deg); }
+}
+
+@keyframes floatC {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  50% { transform: translateX(-16px) rotate(12deg); }
+}
+
+.float-a { animation: floatA 7s ease-in-out infinite; }
+.float-b { animation: floatB 9s ease-in-out infinite; }
+.float-c { animation: floatC 11s ease-in-out infinite; }
+
+/* ── ACTIVE NAV DOT ── */
+.nav-section-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d1d5db;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.nav-section-dot.active {
+  background: #000;
+  transform: scale(1.5);
+}
+
+/* ── SUCCESS STATE ── */
+@keyframes successPop {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.success-icon {
+  animation: successPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  height: 1px;
+  background: #e5e7eb;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #000;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.progress-fill.animate {
+  transform: scaleX(1);
+}
+
+/* ── HORIZONTAL SCROLL SECTION ── */
+.horizontal-scroll-section {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+}
+
+/* RESPONSIVE UTILITIES */
+@media (max-width: 768px) {
+  body { cursor: auto !important; }
+  *, *::before, *::after { cursor: auto !important; }
+  .cursor-dot, .cursor-outline { display: none; }
 }
