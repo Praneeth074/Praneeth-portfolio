@@ -20,7 +20,7 @@ export function HeroSection() {
       const { gsap } = await import('gsap')
 
       // Staggered headline reveal
-      const tl = gsap.timeline({ delay: 1.8 })
+      const tl = gsap.timeline({ delay: 0.8 })
       tl.fromTo(
         '.hero-line',
         { yPercent: 120, opacity: 0 },
@@ -104,10 +104,10 @@ export function HeroSection() {
 
       {/* Large background letter */}
       <div
-        className="absolute right-0 top-1/2 -translate-y-1/2 text-[28vw] font-display font-bold text-gray-50 leading-none select-none pointer-events-none tracking-tighter"
+        className="absolute right-0 top-1/2 -translate-y-1/2 text-[28vw] font-display font-bold text-gray-100 leading-none select-none pointer-events-none tracking-tighter"
         aria-hidden="true"
       >
-        AM
+        DEV
       </div>
 
       {/* Main content */}
@@ -126,7 +126,7 @@ export function HeroSection() {
           {SITE.availableForWork && (
             <span className="flex items-center gap-1.5 text-xs text-green-600 bg-green-50 px-3 py-1 rounded-full border border-green-100">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block animate-pulse" />
-              Available
+              Active and available for new opportunities
             </span>
           )}
         </motion.div>

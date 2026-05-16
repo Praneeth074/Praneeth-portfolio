@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import CountUp from 'react-countup'
 import { STATS, SITE } from '@/lib/data'
 import { Download } from 'lucide-react'
-
+import Image from "next/image";
 export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const statsRef = useRef<HTMLDivElement>(null)
@@ -80,19 +80,16 @@ export function AboutSection() {
 
             <div className="space-y-5 text-gray-500 leading-relaxed text-[1.05rem]">
               <p className="about-para opacity-0">
-                I&apos;m a Full Stack Developer with {new Date().getFullYear() - 2019}+ years of experience building
-                production-grade web applications. My stack spans React.js, Next.js, Node.js, and PHP —
-                with a deep appreciation for clean architecture and intuitive UI.
-              </p>
-              <p className="about-para opacity-0">
-                I&apos;ve shipped products for startups and enterprises alike, handling everything from
-                database schema design to pixel-level frontend polish. I care deeply about performance,
-                accessibility, and the craft of writing maintainable code.
-              </p>
-              <p className="about-para opacity-0">
-                When I&apos;m not coding, I&apos;m exploring new frameworks, contributing to open-source, or
-                writing about web development on my blog.
-              </p>
+  I&apos;m a Full Stack Developer with over a year of experience building scalable and responsive web applications using Angular, Node.js, and AWS. I specialize in crafting seamless user experiences while developing robust backend systems and cloud-based solutions.
+</p>
+
+<p className="about-para opacity-0">
+  As an AWS Certified Developer, I&apos;ve worked on designing APIs, optimizing application performance, and developing end-to-end architectures that balance technical efficiency with real-world business needs. I enjoy turning complex requirements into clean, maintainable solutions.
+</p>
+
+<p className="about-para opacity-0">
+  Beyond development, I&apos;m passionate about exploring modern web technologies, improving system design practices, and continuously learning new tools that help build faster, smarter, and more reliable applications.
+</p>
             </div>
 
             <motion.div
@@ -103,11 +100,11 @@ export function AboutSection() {
               className="mt-10 flex flex-wrap gap-3"
             >
               <a
-                href="/resume.pdf"
+                href="/Praneeth_FSD.pdf" target="_blank" rel="noopener noreferrer"
                 download
                 className="btn-primary flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-medium"
               >
-                <span>Download CV</span>
+                <span>Download Resume</span>
                 <Download size={14} className="relative z-10" />
               </a>
             </motion.div>
@@ -116,21 +113,22 @@ export function AboutSection() {
           {/* Portrait + stats */}
           <div className="space-y-10">
             {/* Portrait */}
-            <div className="about-portrait relative overflow-hidden rounded-2xl aspect-[4/3] bg-gray-50">
-              <div className="about-img-mask absolute inset-0 bg-white z-10 origin-right" />
-              <div
-                className="about-portrait-img w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center"
-                aria-label="Alex Morgan portrait"
-              >
-                <div className="text-center">
-                  <div className="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4 flex items-center justify-center">
-                    <span className="font-display font-bold text-3xl text-gray-500">AM</span>
-                  </div>
-                  <p className="text-gray-400 text-sm">Add your photo to</p>
-                  <p className="text-gray-400 text-sm font-mono">/public/images/portrait.jpg</p>
-                </div>
-              </div>
-            </div>
+            <div className="about-portrait relative overflow-hidden rounded-2xl w-full max-w-[490px] h-[400px] bg-gray-50">
+  <div className="about-img-mask absolute inset-0 bg-white z-10 origin-right" />
+
+  <div
+    className="about-portrait-img relative w-full h-full"
+    aria-label="Praneeth portrait"
+  >
+    <Image
+      src="/profile_pic1.jpg"
+      alt="Praneeth"
+      fill
+      className="object-cover rounded-1xl"
+      priority
+    />
+  </div>
+</div>
 
             {/* Stats grid */}
             <div ref={statsRef} className="grid grid-cols-2 gap-4">

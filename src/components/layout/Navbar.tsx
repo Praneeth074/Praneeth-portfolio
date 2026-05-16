@@ -78,9 +78,9 @@ export function Navbar() {
           className="font-display font-bold text-sm tracking-tight group"
           aria-label="Scroll to top"
         >
-          <span className="group-hover:text-accent transition-colors duration-200">AM</span>
-          <span className="text-gray-300 mx-1">/</span>
-          <span className="text-gray-400 text-xs font-normal tracking-wide">dev</span>
+          <span className="group-hover:text-accent transition-colors duration-200">SAI PRANEETH REDDY</span>
+          {/* <span className="text-gray-300 mx-1"> - </span>
+          <span className="text-gray-400 text-xs font-normal tracking-wide">FULL STACK DEVELOPER</span> */}
         </button>
 
         {/* Desktop nav */}
@@ -109,7 +109,7 @@ export function Navbar() {
             )
           })}
           <a
-            href="mailto:hello@alexmorgan.dev"
+            href="mailto:saipraneethreddy2004@gmail.com"
             className="btn-primary text-xs px-5 py-2.5 rounded-full font-medium tracking-wide"
           >
             <span>Hire Me</span>
@@ -150,7 +150,7 @@ export function Navbar() {
                   {link.label}
                 </motion.button>
               ))}
-              <a href="mailto:hello@alexmorgan.dev" className="btn-primary text-sm px-5 py-3 rounded-full text-center font-medium mt-2">
+              <a href="mailto:saipraneethreddy2004@gmail.com" className="btn-primary text-sm px-5 py-3 rounded-full text-center font-medium mt-2">
                 <span>Hire Me</span>
               </a>
             </nav>

@@ -42,7 +42,7 @@ export function ProjectsSection() {
             <span className="text-xs tracking-[0.25em] uppercase text-gray-400 font-medium">Projects</span>
           </div>
           <a
-            href="https://github.com/alexmorgan"
+            href="https://github.com/praneeth074?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
             className="animated-link text-xs text-gray-400 hover:text-black transition-colors tracking-widest uppercase flex items-center gap-2"

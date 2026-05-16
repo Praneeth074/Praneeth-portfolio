@@ -6,7 +6,7 @@ import { SITE } from '@/lib/data'
 const socials = [
   { icon: Github, label: 'GitHub', href: SITE.github },
   { icon: Linkedin, label: 'LinkedIn', href: SITE.linkedin },
-  { icon: Twitter, label: 'Twitter', href: SITE.twitter },
+  // { icon: Twitter, label: 'Twitter', href: SITE.twitter },
 ]
 
 export function Footer() {
@@ -29,7 +29,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
           <div>
-            <p className="font-display font-bold text-xl tracking-tight">Alex Morgan</p>
+            <p className="font-display font-bold text-xl tracking-tight">Perla Venkata Sai Praneeth Reddy</p>
             <p className="text-xs text-gray-400 mt-1 tracking-wide">Full Stack Developer</p>
           </div>
 
@@ -67,11 +67,10 @@ export function Footer() {
 
         <div className="mt-10 pt-6 border-t border-gray-50 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-300">
-            &copy; {new Date().getFullYear()} Alex Morgan. All rights reserved.
+            &copy; {new Date().getFullYear()} Sai Praneeth Reddy. All rights reserved.
           </p>
           <p className="text-xs text-gray-300">
-            Built with <span className="text-black">Next.js</span> &amp;{' '}
-            <span className="text-black">Tailwind CSS</span>
+            Built with <span className="text-black"><a href="https://nextjs.org" target="_blank" rel="noopener noreferrer">Next.js</a></span> &amp;{' '}
           </p>
         </div>
       </div>

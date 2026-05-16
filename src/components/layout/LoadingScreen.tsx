@@ -37,10 +37,10 @@ export function LoadingScreen() {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <p className="text-xs tracking-[0.3em] text-gray-400 uppercase mb-8 font-medium">
-              Alex Morgan
+            <p className="text-lg tracking-[0.3em] text-gray-400 uppercase mb-8 font-large font-weight-[700]">
+              WELCOME TO MY PORTFOLIO
             </p>
-            <div className="w-48 h-[1px] bg-gray-100 relative overflow-hidden">
+            <div className="w-full h-[0.1rem] bg-gray-100 relative overflow-hidden">
               <div
                 className="absolute left-0 top-0 h-full bg-black transition-all duration-300 ease-out"
                 style={{ width: `${progress}%` }}

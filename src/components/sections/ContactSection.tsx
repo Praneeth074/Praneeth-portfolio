@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Send, Github, Linkedin, Twitter, CheckCircle, Mail, MapPin } from 'lucide-react'
+import { Send, Github, Linkedin, Twitter, CheckCircle, Mail, MapPin, ExternalLink } from 'lucide-react'
 import { SITE } from '@/lib/data'
 
 interface FormState {
@@ -12,9 +12,8 @@ interface FormState {
 }
 
 const socials = [
-  { icon: Github, label: 'GitHub', href: SITE.github, handle: '@alexmorgan' },
-  { icon: Linkedin, label: 'LinkedIn', href: SITE.linkedin, handle: 'Alex Morgan' },
-  { icon: Twitter, label: 'Twitter', href: SITE.twitter, handle: '@alexmorgan' },
+  { icon: Github, label: 'GitHub', href: SITE.github, handle: '@praneeth074' },
+  { icon: Linkedin, label: 'LinkedIn', href: SITE.linkedin, handle: 'praneeth-dev' },
 ]
 
 export function ContactSection() {
@@ -132,99 +131,50 @@ export function ContactSection() {
 
           {/* Form */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <AnimatePresence mode="wait">
-              {submitted ? (
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col items-center justify-center h-full py-24 text-center"
-                >
-                  <div className="success-icon w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mb-6">
-                    <CheckCircle size={32} className="text-green-500" />
-                  </div>
-                  <h3 className="font-display font-bold text-2xl text-black mb-3">Message sent!</h3>
-                  <p className="text-gray-400 text-sm max-w-xs">
-                    Thank you for reaching out. I&apos;ll get back to you within 24 hours.
-                  </p>
-                  <button
-                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', subject: '', message: '' }) }}
-                    className="mt-8 text-xs text-gray-400 hover:text-black transition-colors animated-link"
-                  >
-                    Send another message
-                  </button>
-                </motion.div>
-              ) : (
-                <motion.form
-                  key="form"
-                  onSubmit={handleSubmit}
-                  className="space-y-8 bg-white p-8 lg:p-10 rounded-3xl border border-gray-100 shadow-sm"
-                >
-                  <div className="grid grid-cols-2 gap-6">
-                    <FormField
-                      label="Name"
-                      name="name"
-                      type="text"
-                      value={form.name}
-                      onChange={handleChange}
-                      required
-                    />
-                    <FormField
-                      label="Email"
-                      name="email"
-                      type="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <FormField
-                    label="Subject"
-                    name="subject"
-                    type="text"
-                    value={form.subject}
-                    onChange={handleChange}
-                    required
-                  />
-                  <div className={`form-group relative ${form.message ? 'has-value' : ''}`}>
-                    <label className="form-label">Message</label>
-                    <textarea
-                      name="message"
-                      rows={5}
-                      value={form.message}
-                      onChange={handleChange}
-                      required
-                      className="form-input resize-none pt-4"
-                      aria-label="Message"
-                    />
-                  </div>
+  initial={{ opacity: 0, x: 40 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+>
+  {/* Contact Card */}
+  <div className="bg-white p-8 lg:p-10 rounded-3xl border border-gray-100 shadow-sm text-center">
+    
+    <div className="w-16 h-16 mx-auto rounded-full bg-black text-white flex items-center justify-center mb-6">
+      <Send size={24} />
+    </div>
 
-                  <motion.button
-                    type="submit"
-                    disabled={loading}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="btn-primary w-full flex items-center justify-center gap-3 py-4 rounded-full text-sm font-medium tracking-wide disabled:opacity-60"
-                  >
-                    <span>{loading ? 'Sending...' : 'Send Message'}</span>
-                    <motion.div
-                      animate={loading ? { rotate: 360 } : { rotate: 0 }}
-                      transition={loading ? { repeat: Infinity, duration: 1, ease: 'linear' } : {}}
-                      className="relative z-10"
-                    >
-                      <Send size={14} />
-                    </motion.div>
-                  </motion.button>
-                </motion.form>
-              )}
-            </AnimatePresence>
-          </motion.div>
+    <h3 className="font-display font-bold text-2xl text-black mb-4">
+      Let&apos;s Connect
+    </h3>
+
+    <p className="text-gray-500 text-sm leading-relaxed max-w-md mx-auto mb-8">
+      I&apos;m currently available for freelance work, collaborations, and full-time opportunities.
+      Feel free to reach out via email or connect with me on LinkedIn.
+    </p>
+
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      
+      <a
+                        href="mailto:saipraneethreddy2004@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary flex items-center gap-2 px-6 py-3 rounded-full text-xs font-medium"
+                      >
+                        <span>Mail me</span>
+                        <ExternalLink size={12} className="relative z-10" />
+                      </a>
+
+      <a
+        href="https://www.linkedin.com/in/praneeth-dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="border border-gray-200 hover:border-black transition-colors px-6 py-3 rounded-full text-sm font-medium tracking-wide"
+      >
+        Message on LinkedIn
+      </a>
+    </div>
+  </div>
+</motion.div>
         </div>
       </div>
     </section>

@@ -1,14 +1,14 @@
 export const SITE = {
-  name: 'Alex Morgan',
+  name: 'PERLA VENKATA SAI PRANEETH REDDY',
   role: 'Full Stack Developer',
   tagline: 'I build things for the web.',
   description:
-    'A full-stack developer with 5+ years of experience crafting performant, elegant digital experiences. I specialise in React, Next.js, and scalable backend systems.',
-  email: 'hello@alexmorgan.dev',
+    'A full-stack developer with 1+ years of experience crafting performant, elegant digital experiences. I specialise in Angular, Next.js, and Node.js.',
+  email: 'saipraneethreddy2004@gmail.com',
   location: 'Pune, India',
-  github: 'https://github.com/alexmorgan',
-  linkedin: 'https://linkedin.com/in/alexmorgan',
-  twitter: 'https://twitter.com/alexmorgan',
+  github: 'https://github.com/praneeth074',
+  linkedin: 'https://linkedin.com/in/praneeth-dev',
+  twitter: '#',
   availableForWork: true,
 }
 
@@ -21,8 +21,8 @@ export const NAV_LINKS = [
 ]
 
 export const STATS = [
-  { value: 5, suffix: '+', label: 'Years Experience' },
-  { value: 40, suffix: '+', label: 'Projects Shipped' },
+  { value: 1, suffix: '+', label: 'Years Experience' },
+  { value: 3, suffix: '+', label: 'Projects Shipped' },
   { value: 12, suffix: '+', label: 'Technologies' },
   { value: 99, suffix: '%', label: 'Client Satisfaction' },
 ]
@@ -33,140 +33,91 @@ export const SKILLS = {
     { name: 'JavaScript', level: 93 },
     { name: 'HTML / CSS', level: 98 },
     { name: 'PHP', level: 82 },
-    { name: 'Python', level: 70 },
+    { name: 'JAVA', level: 80 },
   ],
   Frontend: [
     { name: 'React.js', level: 95 },
     { name: 'Next.js', level: 93 },
-    { name: 'Tailwind CSS', level: 92 },
-    { name: 'Framer Motion', level: 85 },
-    { name: 'AngularJS', level: 72 },
+    { name: 'Tailwind CSS', level: 88 },
+    { name: 'Jquery', level: 90 },
+    { name: 'AngularJS', level: 89 },
+    { name: 'WordPress', level: 88 },
   ],
   Backend: [
     { name: 'Node.js', level: 88 },
     { name: 'Express', level: 86 },
     { name: 'REST APIs', level: 92 },
-    { name: 'GraphQL', level: 74 },
-    { name: 'WordPress', level: 88 },
+    { name: 'Socket.io', level: 74 },
+    { name: 'PHP', level: 82 },
+    
   ],
   Database: [
     { name: 'PostgreSQL', level: 84 },
     { name: 'MySQL', level: 88 },
-    { name: 'MongoDB', level: 76 },
-    { name: 'Redis', level: 68 },
-    { name: 'Prisma ORM', level: 80 },
   ],
   'Tools & Cloud': [
-    { name: 'Git / GitHub', level: 95 },
+    { name: 'Git / BitBucket', level: 95 },
     { name: 'Docker', level: 74 },
-    { name: 'Vercel / Netlify', level: 90 },
-    { name: 'AWS (basics)', level: 65 },
-    { name: 'GSAP', level: 82 },
+    { name: 'Postman', level: 80 },
+    { name: 'AWS ', level: 80 },
+    { name: 'DBeaver', level: 82 },
   ],
 }
 
 export const PROJECTS = [
   {
-    id: 'shopflow',
-    title: 'ShopFlow',
-    subtitle: 'E-Commerce Platform',
+    id: 'Bravo Store',
+    title: 'Bravo Store',
+    subtitle: 'Local merchandise managing software',
     description:
-      'A high-performance e-commerce platform with real-time inventory, Stripe payments, and analytics dashboard. Handles 10k+ monthly transactions with 99.9% uptime.',
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe', 'Redis'],
+      'A high-performance merchandise software with real-time inventory, Invoice Generation, and analytics dashboard. Built with PHP, MySQL (maria DB) with RBAC ACCESS control and secure access.',
+    tech: ['PHP, MYSQL', 'HTML/CSS', 'JavaScript', 'AJAX'],
     color: '#f0f4ff',
     accentColor: '#0052CC',
-    github: 'https://github.com/alexmorgan/shopflow',
-    live: 'https://shopflow.demo',
+    github: 'https://github.com/praneeth074/bravostore',
+    // live: 'https://bravostore.demo',
     featured: true,
   },
   {
-    id: 'datapulse',
-    title: 'DataPulse',
-    subtitle: 'Analytics SaaS',
+    id: 'CNA Innovative',
+    title: 'CNA Innovative',
+    subtitle: 'AI-Powered Legal Case Management & Document Intelligence case study',
     description:
-      'Real-time analytics SaaS with customizable dashboards, multi-tenant architecture, and exportable reports. White-label ready for enterprise clients.',
-    tech: ['React', 'Node.js', 'MySQL', 'Chart.js', 'Docker'],
+      'An AI-driven legal case management system that automates document analysis, case tracking, and legal research. Built with Next.js, Node.js, and integrated with OpenAI for natural language processing.',
+    tech: ['PHP', 'WORDPRESS'],
     color: '#f0fff4',
     accentColor: '#059669',
-    github: 'https://github.com/alexmorgan/datapulse',
-    live: 'https://datapulse.demo',
+    github: 'https://github.com/praneeth074',
+    live: 'https://cnainnovative.com',
     featured: true,
   },
-  {
-    id: 'medrecord',
-    title: 'MedRecord',
-    subtitle: 'Healthcare Portal',
-    description:
-      'HIPAA-compliant patient records system with role-based access control, end-to-end encryption, and seamless data migration tooling.',
-    tech: ['PHP', 'MySQL', 'React', 'XAMPP', 'REST API'],
-    color: '#fff0f4',
-    accentColor: '#dc2626',
-    github: 'https://github.com/alexmorgan/medrecord',
-    live: 'https://medrecord.demo',
-    featured: false,
-  },
-  {
-    id: 'nexthire',
-    title: 'NextHire',
-    subtitle: 'Recruitment Platform',
-    description:
-      'AI-assisted recruitment platform with candidate scoring, automated email flows, and interview scheduling. Built with Next.js App Router and OpenAI.',
-    tech: ['Next.js', 'TypeScript', 'OpenAI', 'Prisma', 'PostgreSQL'],
-    color: '#fafaf0',
-    accentColor: '#ca8a04',
-    github: 'https://github.com/alexmorgan/nexthire',
-    live: 'https://nexthire.demo',
-    featured: false,
-  },
+  
 ]
 
 export const EXPERIENCE = [
   {
-    period: '2023 – Present',
-    role: 'Senior Full Stack Developer',
-    company: 'TechVentures SaaS',
-    location: 'Remote',
-    description:
-      'Leading product engineering for a B2B SaaS platform. Architected a Next.js 14 App Router migration, reducing TTFB by 60%. Mentoring a team of 4 junior developers.',
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'AWS'],
-  },
-  {
-    period: '2021 – 2023',
+    period: 'Feb 2026 – Present',
     role: 'Full Stack Developer',
-    company: 'PixelLabs Agency',
+    company: 'ITT Star Global Services pvt ltd',
     location: 'Pune, India',
     description:
-      'Delivered 18+ client projects spanning e-commerce, dashboards, and CMS platforms. Introduced TypeScript and code review processes that reduced production bugs by 40%.',
-    tech: ['React', 'Node.js', 'MySQL', 'WordPress'],
+      'Leading development of 2+ client projects, delivering scalable web applications with Next.js, Angular and Node.js.',
+    tech: ['Angular JS', 'Node.js', 'Express JS','Next.js', 'TypeScript', 'PostgreSQL', 'AWS'],
   },
   {
-    period: '2020 – 2021',
-    role: 'Frontend Developer',
-    company: 'Startup Studio',
+    period: 'Jul 2025 – Jan 2026',
+    role: 'Full Stack Developer Trainee',
+    company: 'ITT Star Global Services pvt ltd',
     location: 'Pune, India',
     description:
-      'Built responsive React UIs and WordPress themes for early-stage startups. Implemented Storybook component library adopted by 3 product teams.',
-    tech: ['React', 'JavaScript', 'CSS', 'WordPress'],
+      'During trianing period, I developed a local merchandise managing software using PHP and MySQL, gaining hands-on experience in full-stack development and database management.',
+    tech: ['HTML', 'CSS', 'JavaScript','jQuery','AJAX', 'PHP', 'MySQL', 'WordPress'],
   },
-  {
-    period: '2019 – 2020',
-    role: 'Junior Web Developer',
-    company: 'Freelance',
-    location: 'Remote',
-    description:
-      'Delivered custom websites and PHP backends for small businesses. Developed data migration scripts for legacy system modernization projects.',
-    tech: ['PHP', 'MySQL', 'HTML/CSS', 'JavaScript'],
-  },
+
 ]
 
 export const TESTIMONIALS = [
-  {
-    name: 'Sarah Chen',
-    role: 'CTO, TechVentures',
-    avatar: 'SC',
-    quote:
-      "Alex completely transformed our platform's architecture. The Next.js migration was flawless, and the performance improvements were beyond our expectations. A truly exceptional engineer.",
-  },
+  
   {
     name: 'Marcus Rivera',
     role: 'Founder, ShopFlow',

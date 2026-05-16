@@ -15,25 +15,25 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Alex Morgan — Full Stack Developer',
+  title: 'Sai Praneeth Reddy — Full Stack Developer',
   description:
     'Full Stack Developer specializing in React, Next.js, Node.js and crafting high-performance digital experiences.',
   keywords: ['Full Stack Developer', 'React', 'Next.js', 'TypeScript', 'Node.js', 'Portfolio'],
-  authors: [{ name: 'Alex Morgan' }],
-  creator: 'Alex Morgan',
+  authors: [{ name: 'Sai Praneeth Reddy' }],
+  creator: 'Sai Praneeth Reddy',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://alexmorgan.dev',
-    title: 'Alex Morgan — Full Stack Developer',
+    url: 'https://saipraneethreddy.dev',
+    title: 'Sai Praneeth Reddy — Full Stack Developer',
     description: 'Crafting premium digital experiences with modern web technologies.',
-    siteName: 'Alex Morgan Portfolio',
+    siteName: 'Sai Praneeth Reddy Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alex Morgan — Full Stack Developer',
+    title: 'Sai Praneeth Reddy — Full Stack Developer',
     description: 'Crafting premium digital experiences with modern web technologies.',
-    creator: '@alexmorgan',
+    creator: '@saipraneethreddy',
   },
   robots: { index: true, follow: true },
 }
